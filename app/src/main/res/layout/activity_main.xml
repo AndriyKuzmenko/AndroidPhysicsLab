@@ -63,8 +63,12 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
+            android:fontFamily="serif"
             android:onClick="logIn"
-            android:text="Log in" />
+            android:text="Log in"
+            android:textColor="#05133E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="match_parent"
