@@ -2,6 +2,7 @@ package com.example.androidphysicslab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity
 
     public void logIn(View view)
     {
-
+        Intent si=new Intent(this, MenuActivity.class);
+        startActivity(si);
     }
 }
