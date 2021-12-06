@@ -28,6 +28,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="freeFall"
                 android:text="Free Fall" />
         </LinearLayout>
     </ScrollView>
