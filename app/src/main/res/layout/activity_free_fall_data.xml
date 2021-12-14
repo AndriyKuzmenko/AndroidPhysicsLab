@@ -22,7 +22,64 @@
             android:layout_height="0px"
             android:layout_weight="1" />
 
+        <TextView
+            android:id="@+id/massLabel"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Mass (kg)"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/massET"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:inputType="numberDecimal"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/heightLabel"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Height (m)"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/heightET"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:inputType="numberDecimal"
+            android:textColor="#06073E"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/planetSpinner"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1" />

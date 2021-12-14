@@ -23,11 +23,22 @@ import java.util.TimerTask;
 
 public class FreeFallActivity extends AppCompatActivity
 {
+    double mass,height,gravity,accelaration;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Intent gi = getIntent();
+        mass=gi.getIntExtra("mass",0); //will be used in the table to calculate energy
+        height=gi.getIntExtra("height",0);
+        int planet=gi.getIntExtra("planet",0);
+        if(planet>=0) gravity=Languages.gravity[planet];
+        else gravity=10;
+        double meter=Resources.getSystem().getDisplayMetrics().heightPixels/(height+1);
+        accelaration=gravity*meter/100;
+
         super.onCreate(savedInstanceState);
-        setContentView(new DrawingView(this));
+        setContentView(new DrawingView(this,accelaration));
     }
 
     public void move(View view)
@@ -50,9 +61,10 @@ class DrawingView extends SurfaceView
     private SurfaceHolder surfaceHolder;
     private Paint paint = new Paint();
     int x,y,vx,vy;
+    double accelaration;
     Canvas canvas;
 
-    public DrawingView(Context context)
+    public DrawingView(Context context, double accelaration)
     {
         super(context);
         surfaceHolder = getHolder();
@@ -61,6 +73,7 @@ class DrawingView extends SurfaceView
         paint.setColor(Color.RED);
         x=y=0;
         vx=vy=10;
+        this.accelaration=accelaration;
 
 /*
         Timer t=new Timer();
@@ -97,11 +110,11 @@ class DrawingView extends SurfaceView
                         surfaceHolder.unlockCanvasAndPost(canvas);
                         //x+=vx;
                         y+=vy;
-                        vy+=2;
+                        vy+=accelaration;
 
                         if(y>=Resources.getSystem().getDisplayMetrics().heightPixels ||y<=0) t.cancel();
                     }
-                }, 10, 10);
+                }, 5, 5);
             }
         }
         return false;
