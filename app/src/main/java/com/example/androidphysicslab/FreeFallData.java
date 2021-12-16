@@ -85,10 +85,14 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
 
         Log.i("TAG","planet="+planet+", g="+Languages.gravity[planet]);
 
-        si.putExtra("mass",Double.parseDouble(massET.getText().toString()));
-        si.putExtra("height",Double.parseDouble(heightET.getText().toString()));
+        double m=Double.parseDouble(massET.getText().toString());
+        double h=Double.parseDouble(heightET.getText().toString());
+
+        si.putExtra("mass",m);
+        si.putExtra("height",h);
         if(b) si.putExtra("planet",-1);
         else     si.putExtra("planet",planet);
+        Log.w("TAG","m= "+m+" h="+h);
 
         startActivity(si);
     }

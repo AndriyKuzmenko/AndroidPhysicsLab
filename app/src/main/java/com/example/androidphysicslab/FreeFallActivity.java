@@ -11,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -29,13 +30,14 @@ public class FreeFallActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         Intent gi = getIntent();
-        mass=gi.getIntExtra("mass",0); //will be used in the table to calculate energy
-        height=gi.getIntExtra("height",0);
+        mass=gi.getDoubleExtra("mass",0); //will be used in the table to calculate energy
+        height=gi.getDoubleExtra("height",0);
         int planet=gi.getIntExtra("planet",0);
         if(planet>=0) gravity=Languages.gravity[planet];
         else gravity=10;
-        double meter=Resources.getSystem().getDisplayMetrics().heightPixels/(height+1);
+        double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height+1);
         accelaration=gravity*meter/100;
+        Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
         super.onCreate(savedInstanceState);
         setContentView(new DrawingView(this,accelaration));
