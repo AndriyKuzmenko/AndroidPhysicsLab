@@ -34,7 +34,54 @@ public class FreeFallResults extends AppCompatActivity
 
         for(int i=0; i<hList.length; i++)
         {
-            list[i]="h="+hList[i]+"  v="+vList[i];
+            String t="t=";
+            String time=String.valueOf((double)i/100);
+            int dot=time.indexOf('.');
+            if(time.length()>dot+3)
+            {
+                time=time.substring(0,dot+3);
+            }
+            else
+            {
+                while(time.length()<=dot+3)
+                {
+                    time+=" ";
+                }
+            }
+            t+=time+"    h=";
+
+            String h=String.valueOf(hList[i]);
+            dot=h.indexOf('.');
+            if(h.length()>dot+3)
+            {
+                h=h.substring(0,dot+3);
+            }
+            else
+            {
+                while(h.length()<=dot+3)
+                {
+                    h+=" ";
+                }
+            }
+            t+=h+"    v=";
+
+            String v=String.valueOf(vList[i]);
+            dot=v.indexOf('.');
+            if(v.length()>dot+3)
+            {
+                v=v.substring(0,dot+3);
+            }
+            else
+            {
+                while(h.length()<=dot+3)
+                {
+                    v+=" ";
+                }
+            }
+
+            t+=v;
+
+            list[i]=t;
         }
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
