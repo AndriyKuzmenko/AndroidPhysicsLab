@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,12 +36,12 @@ public class FreeFallActivity extends AppCompatActivity
         int planet=gi.getIntExtra("planet",0);
         if(planet>=0) gravity=Languages.gravity[planet];
         else gravity=10;
-        double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height+1);
+        double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
         accelaration=gravity*meter/100;
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
         super.onCreate(savedInstanceState);
-        setContentView(new DrawingView(this,accelaration));
+        setContentView(new DrawingView(this,accelaration,height*meter));
     }
 
     public void move(View view)
@@ -62,11 +63,11 @@ class DrawingView extends SurfaceView
 
     private SurfaceHolder surfaceHolder;
     private Paint paint = new Paint();
-    int x,y,vx,vy;
+    double x,y,vx,vy,h;
     double accelaration;
     Canvas canvas;
 
-    public DrawingView(Context context, double accelaration)
+    public DrawingView(Context context, double accelaration, double h)
     {
         super(context);
         surfaceHolder = getHolder();
@@ -76,6 +77,7 @@ class DrawingView extends SurfaceView
         x=y=0;
         vx=vy=10;
         this.accelaration=accelaration;
+        this.h=h;
 
 /*
         Timer t=new Timer();
@@ -106,12 +108,23 @@ class DrawingView extends SurfaceView
                     @Override
                     public void run()
                     {
+                        if(y>=h+30)
+                        {
+                            y=h+30;
+                            t.cancel();
+                            Log.w("TAG","y="+y);
+                        }
+
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
-                        canvas.drawCircle(x, y, 50, paint);
+                        paint.setColor(Color.RED);
+                        canvas.drawCircle((int)x, (int)y, 30, paint);
+                        paint.setColor(Color.BLUE);
+                        canvas.drawRect(new Rect(0,(int)h+61,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels),paint);
                         surfaceHolder.unlockCanvasAndPost(canvas);
                         //x+=vx;
                         y+=vy;
+
                         vy+=accelaration;
 
                         if(y>=Resources.getSystem().getDisplayMetrics().heightPixels ||y<=0) t.cancel();
@@ -121,11 +134,12 @@ class DrawingView extends SurfaceView
         }
         return false;
     }
-
+/*
     @Override
     protected void onDraw(Canvas canvas)
     {
         canvas.drawColor(Color.BLUE);
-        canvas.drawCircle(x, y, 100, paint);
+        canvas.drawCircle((int)x, (int)y, 100, paint);
     }
+    */
 }
