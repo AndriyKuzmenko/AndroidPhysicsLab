@@ -20,12 +20,14 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class FreeFallActivity extends AppCompatActivity
 {
     double mass,height,gravity,accelaration;
+    ArrayList<Double> hList, vList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,14 +41,11 @@ public class FreeFallActivity extends AppCompatActivity
         double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
         accelaration=gravity*meter/100;
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
+        hList=new ArrayList<Double>();
+        vList=new ArrayList<Double>();
 
         super.onCreate(savedInstanceState);
         setContentView(new DrawingView(this,accelaration,height*meter,meter));
-    }
-
-    public void move(View view)
-    {
-
     }
 
     @Override
@@ -55,6 +54,38 @@ public class FreeFallActivity extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        menu.add("Results");
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(DrawingView.vList.contains(-1.0))
+        {
+            DrawingView.vList.remove(-1.0);
+            Intent si=new Intent(this,FreeFallResults.class);
+            Log.w("TAG",""+DrawingView.hList.size()+" "+DrawingView.vList.size());
+            double[] hList=new double[DrawingView.hList.size()];
+            double[] vList=new double[DrawingView.vList.size()];
+
+            for(int i=0; i<hList.length; i++)
+            {
+                hList[i]=DrawingView.hList.get(i);
+                vList[i]=DrawingView.vList.get(i);
+            }
+
+            si.putExtra("hList",hList);
+            si.putExtra("vList",vList);
+            startActivity(si);
+        }
+
+        return true;
     }
 }
 
@@ -66,6 +97,9 @@ class DrawingView extends SurfaceView
     double x,y,vx,vy,h,meter;
     double accelaration;
     Canvas canvas;
+    boolean ended;
+    public static ArrayList<Double> hList=new ArrayList<>();
+    public static ArrayList<Double> vList=new ArrayList<>();
 
     public DrawingView(Context context, double accelaration, double h, double meter)
     {
@@ -79,6 +113,7 @@ class DrawingView extends SurfaceView
         this.accelaration=accelaration;
         this.h=h;
         this.meter=meter;
+        ended=false;
 
 /*
         Timer t=new Timer();
@@ -97,7 +132,7 @@ class DrawingView extends SurfaceView
     {
         if(event.getAction() == MotionEvent.ACTION_DOWN)
         {
-            if (surfaceHolder.getSurface().isValid())
+            if (surfaceHolder.getSurface().isValid() && !ended)
             {
                 x=getWidth()/2-25;
                 y=30;
@@ -112,10 +147,15 @@ class DrawingView extends SurfaceView
                         if(y>=h+30)
                         {
                             y=h+30;
+                            ended=true;
+                            vList.add(-1.0);
+                            Log.i("TAG",vList.size()+"");
                             t.cancel();
                         }
 
                         Log.w("TAG","y="+y+"  h="+(h-y+30)/meter+"  vy"+vy/meter);
+                        hList.add((h-y+30)/meter);
+                        vList.add(vy/meter);
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
                         paint.setColor(Color.RED);
@@ -123,7 +163,6 @@ class DrawingView extends SurfaceView
                         paint.setColor(Color.BLUE);
                         canvas.drawRect(new Rect(0,(int)h+61,Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels),paint);
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                        //x+=vx;
                         y+=vy;
 
                         vy+=accelaration;
@@ -131,6 +170,10 @@ class DrawingView extends SurfaceView
                         if(y>=Resources.getSystem().getDisplayMetrics().heightPixels ||y<=0) t.cancel();
                     }
                 }, 5, 5);
+            }
+            else if(surfaceHolder.getSurface().isValid())
+            {
+
             }
         }
         return false;
