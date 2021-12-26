@@ -41,7 +41,7 @@ public class FreeFallActivity extends AppCompatActivity
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
         super.onCreate(savedInstanceState);
-        setContentView(new DrawingView(this,accelaration,height*meter));
+        setContentView(new DrawingView(this,accelaration,height*meter,meter));
     }
 
     public void move(View view)
@@ -63,11 +63,11 @@ class DrawingView extends SurfaceView
 
     private SurfaceHolder surfaceHolder;
     private Paint paint = new Paint();
-    double x,y,vx,vy,h;
+    double x,y,vx,vy,h,meter;
     double accelaration;
     Canvas canvas;
 
-    public DrawingView(Context context, double accelaration, double h)
+    public DrawingView(Context context, double accelaration, double h, double meter)
     {
         super(context);
         surfaceHolder = getHolder();
@@ -78,6 +78,7 @@ class DrawingView extends SurfaceView
         vx=vy=10;
         this.accelaration=accelaration;
         this.h=h;
+        this.meter=meter;
 
 /*
         Timer t=new Timer();
@@ -112,9 +113,9 @@ class DrawingView extends SurfaceView
                         {
                             y=h+30;
                             t.cancel();
-                            Log.w("TAG","y="+y);
                         }
 
+                        Log.w("TAG","y="+y+"  h="+(h-y+30)/meter+"  vy"+vy/meter);
                         canvas = surfaceHolder.lockCanvas();
                         canvas.drawColor(Color.YELLOW);
                         paint.setColor(Color.RED);
