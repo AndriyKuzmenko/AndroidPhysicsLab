@@ -30,12 +30,13 @@ public class FreeFallResults extends AppCompatActivity
 
         Log.w("Tag",String.valueOf(hList==null)+" l="+hList.length);
 
-        String[] list=new String[hList.length];
+        String[] list=new String[hList.length+1];
+        list[0]="t(sec)    h(m)    v(m/sec)";
 
-        for(int i=0; i<hList.length; i++)
+        for(int i=1; i<hList.length+1; i++)
         {
-            String t="t=";
-            String time=String.valueOf((double)i/100);
+            String t=" ";
+            String time=String.valueOf((double)(i-1)/100);
             int dot=time.indexOf('.');
             if(time.length()>dot+3)
             {
@@ -47,10 +48,11 @@ public class FreeFallResults extends AppCompatActivity
                 {
                     time+=" ";
                 }
+                if(i%10==0)time+=" ";
             }
-            t+=time+"    h=";
+            t+=time+"      ";
 
-            String h=String.valueOf(hList[i]);
+            String h=String.valueOf(hList[i-1]);
             dot=h.indexOf('.');
             if(h.length()>dot+3)
             {
@@ -63,9 +65,9 @@ public class FreeFallResults extends AppCompatActivity
                     h+=" ";
                 }
             }
-            t+=h+"    v=";
+            t+=h+"      ";
 
-            String v=String.valueOf(vList[i]);
+            String v=String.valueOf(vList[i-1]);
             dot=v.indexOf('.');
             if(v.length()>dot+3)
             {
