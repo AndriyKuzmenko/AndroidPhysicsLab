@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FreeFallResults"></activity>
+        <activity android:name=".FreeFallPlots"></activity>
+        <activity android:name=".FreeFallResults" />
         <activity android:name=".FreeFallData" />
         <activity android:name=".FreeFallActivity" />
         <activity android:name=".MenuActivity" />
