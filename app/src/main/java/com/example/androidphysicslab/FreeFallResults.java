@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -90,5 +91,11 @@ public class FreeFallResults extends AppCompatActivity
 
         ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,list);
         results.setAdapter(adp);
+    }
+
+    public void plots(View view)
+    {
+        Intent si=new Intent(this,FreeFallResults.class);
+        startActivity(si);
     }
 }
