@@ -19,6 +19,8 @@ public class FreeFallResults extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        final int digitsAfterDot=2;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_fall_results);
 
@@ -38,29 +40,29 @@ public class FreeFallResults extends AppCompatActivity
             String t=" ";
             String time=String.valueOf((double)(i-1)/100);
             int dot=time.indexOf('.');
-            if(time.length()>dot+3)
+            if(time.length()>dot+digitsAfterDot+1)
             {
-                time=time.substring(0,dot+3);
+                time=time.substring(0,dot+digitsAfterDot+1);
             }
             else
             {
-                while(time.length()<=dot+3)
+                while(time.length()<=dot+digitsAfterDot+1)
                 {
                     time+=" ";
                 }
-                if(i%10==0)time+=" ";
+                if(i%10==0)time+="  ";
             }
             t+=time+"      ";
 
             String h=String.valueOf(hList[i-1]);
             dot=h.indexOf('.');
-            if(h.length()>dot+3)
+            if(h.length()>dot+digitsAfterDot+1)
             {
-                h=h.substring(0,dot+3);
+                h=h.substring(0,dot+digitsAfterDot+1);
             }
             else
             {
-                while(h.length()<=dot+3)
+                while(h.length()<=dot+digitsAfterDot+1)
                 {
                     h+=" ";
                 }
@@ -69,13 +71,13 @@ public class FreeFallResults extends AppCompatActivity
 
             String v=String.valueOf(vList[i-1]);
             dot=v.indexOf('.');
-            if(v.length()>dot+3)
+            if(v.length()>dot+digitsAfterDot+1)
             {
-                v=v.substring(0,dot+3);
+                v=v.substring(0,dot+digitsAfterDot+1);
             }
             else
             {
-                while(h.length()<=dot+3)
+                while(h.length()<=dot+digitsAfterDot+1)
                 {
                     v+=" ";
                 }

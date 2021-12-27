@@ -97,7 +97,7 @@ class DrawingView extends SurfaceView
     double x,y,vx,vy,h,meter;
     double accelaration;
     Canvas canvas;
-    boolean ended;
+    boolean started;
     public static ArrayList<Double> hList=new ArrayList<>();
     public static ArrayList<Double> vList=new ArrayList<>();
 
@@ -113,7 +113,7 @@ class DrawingView extends SurfaceView
         this.accelaration=accelaration;
         this.h=h;
         this.meter=meter;
-        ended=false;
+        started=false;
 
 /*
         Timer t=new Timer();
@@ -132,11 +132,12 @@ class DrawingView extends SurfaceView
     {
         if(event.getAction() == MotionEvent.ACTION_DOWN)
         {
-            if (surfaceHolder.getSurface().isValid() && !ended)
+            if (surfaceHolder.getSurface().isValid() && !started)
             {
                 x=getWidth()/2-25;
                 y=30;
                 vy=0;
+                started=true;
 
                 Timer t=new Timer();
                 t.scheduleAtFixedRate(new TimerTask()
@@ -147,7 +148,6 @@ class DrawingView extends SurfaceView
                         if(y>=h+30)
                         {
                             y=h+30;
-                            ended=true;
                             vList.add(-1.0);
                             Log.i("TAG",vList.size()+"");
                             t.cancel();
