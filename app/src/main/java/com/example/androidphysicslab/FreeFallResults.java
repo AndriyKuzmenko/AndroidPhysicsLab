@@ -31,7 +31,8 @@ public class FreeFallResults extends AppCompatActivity
         hList=gi.getDoubleArrayExtra("hList");
         vList=gi.getDoubleArrayExtra("vList");
 
-        Log.w("Tag",String.valueOf(hList==null)+" l="+hList.length);
+        Log.w("Tag",String.valueOf(hList==null));
+        Log.w("TAG"," l="+hList.length);
 
         String[] list=new String[hList.length+1];
         list[0]="t(sec)    h(m)    v(m/sec)";
@@ -95,7 +96,11 @@ public class FreeFallResults extends AppCompatActivity
 
     public void plots(View view)
     {
-        Intent si=new Intent(this,FreeFallResults.class);
+        Intent si=new Intent(this,FreeFallPlots.class);
+
+        si.putExtra("hList",hList);
+        si.putExtra("vList",vList);
+
         startActivity(si);
     }
 }
