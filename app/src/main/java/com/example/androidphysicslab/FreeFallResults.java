@@ -103,4 +103,10 @@ public class FreeFallResults extends AppCompatActivity
 
         startActivity(si);
     }
+
+    public void back(View view)
+    {
+        Intent si=new Intent(this,MenuActivity.class);
+        startActivity(si);
+    }
 }
