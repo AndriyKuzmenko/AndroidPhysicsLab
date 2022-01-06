@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
@@ -57,5 +58,10 @@ public class FreeFallPlots extends AppCompatActivity
         {
             Toast.makeText(FreeFallPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void back(View view)
+    {
+        finish();
     }
 }
