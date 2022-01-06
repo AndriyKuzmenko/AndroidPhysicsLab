@@ -7,52 +7,66 @@
     android:orientation="vertical"
     tools:context=".FreeFallPlots">
 
-    <Space
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="2"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="Height as a function of time"
-        android:textColor="#000022"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/heightPlot"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="10" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50px" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Height as a function of time"
+                android:textColor="#000022"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="2"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="Velocity as a function of time"
-        android:textColor="#000022"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/heightPlot"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/velocityPlot"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="10" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Velocity as a function of time"
+                android:textColor="#000022"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/velocityPlot"
+                android:layout_width="match_parent"
+                android:layout_height="800px" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30px" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50px" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
