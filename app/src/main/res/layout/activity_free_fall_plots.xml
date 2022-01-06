@@ -6,8 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".FreeFallPlots">
 
+    <Space
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Height as a function of time"
+        android:textColor="#000022"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
         android:id="@+id/heightPlot"/>
+
+    <Space
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Velocity as a function of time"
+        android:textColor="#000022"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
+        android:id="@+id/velocityPlot"/>
+
+    <Space
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 </LinearLayout>
