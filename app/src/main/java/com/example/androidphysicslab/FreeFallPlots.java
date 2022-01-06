@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -42,14 +44,18 @@ public class FreeFallPlots extends AppCompatActivity
         try
         {
             LineGraphSeries<DataPoint> vSeries = new LineGraphSeries< >(vPlot);
-            heightPlot.addSeries(vSeries);
+            velocityPlot.addSeries(vSeries);
+
+            Log.w("TAG","vPlot done");
 
             LineGraphSeries<DataPoint> hSeries = new LineGraphSeries< >(hPlot);
-            velocityPlot.addSeries(hSeries);
+            heightPlot.addSeries(hSeries);
+
+            Log.w("TAG","hPlot done");
         }
         catch (IllegalArgumentException e)
         {
-
+            Toast.makeText(FreeFallPlots.this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
