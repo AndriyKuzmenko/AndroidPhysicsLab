@@ -34,6 +34,8 @@ public class Languages
     public static String[] planets;
     public static double[] gravity={3.73, 8.87, 9.807, 1.62, 3.721, 0.0057, 0.03, 24.7, 1.42, 1.236, 1.796, 1.315, 0.062, 0.02, 10.44, 1.352, 0.264, 0.223, 0.232, 0.145, 8.87, 11.5, 0.62};
     public static String whatIsTheGravityOfEarth;
+    public static String heightTime;
+    public static String velocityTime;
 
     public static void toEnglish()
     {
@@ -68,6 +70,8 @@ public class Languages
         pluto="Pluto";
         planets=new String[]{mercury, venus, earth, moon, mars, phobos, deimos, jupiter, ganymede, callisto, io, europa, himalia, amalthea, saturn, titan, rhea, iapetus, dione, tethys, uranus, neptune, pluto};
         whatIsTheGravityOfEarth="You have chosen Planet Earth. Do you want to substitute g=10 or g=9.807?";
+        heightTime="Height as function of time";
+        velocityTime="Velocity as function of time";
     }
 
     public static void toHebrew()
@@ -103,5 +107,7 @@ public class Languages
         pluto="פלוטו";
         planets=new String[]{mercury, venus, earth, moon, mars, phobos, deimos, jupiter, ganymede, callisto, io, europa, himalia, amalthea, saturn, titan, rhea, iapetus, dione, tethys, uranus, neptune, pluto};
         whatIsTheGravityOfEarth="בחרת בכדור הארץ. האם ברצונך להציב בתור תאוצת הכבידה של כדור הארת 9.807 או 10?";
+        heightTime="גובה כפונקציה של זמן";
+        velocityTime="מהירות כפונקציה של זמן";
     }
 }

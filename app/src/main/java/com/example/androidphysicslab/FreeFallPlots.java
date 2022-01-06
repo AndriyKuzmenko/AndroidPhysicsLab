@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.w3c.dom.Text;
+
 public class FreeFallPlots extends AppCompatActivity
 {
     double[] hList,vList;
     DataPoint[] vPlot,hPlot;
+    TextView heightTime, velocityTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,6 +31,8 @@ public class FreeFallPlots extends AppCompatActivity
 
         GraphView heightPlot=(GraphView)findViewById(R.id.heightPlot);
         GraphView velocityPlot=(GraphView)findViewById(R.id.velocityPlot);
+        heightTime=(TextView)findViewById(R.id.heightTime);
+        velocityTime=(TextView)findViewById(R.id.velocityTime);
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
@@ -63,5 +71,43 @@ public class FreeFallPlots extends AppCompatActivity
     public void back(View view)
     {
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.Credits)
+        {
+            //Intent si=new Intent(this, CreditsActivity.class);
+            //startActivity(si);
+            return true;
+        }
+        else if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        heightTime.setText(Languages.heightTime);
+        velocityTime.setText(Languages.velocityTime);
     }
 }
