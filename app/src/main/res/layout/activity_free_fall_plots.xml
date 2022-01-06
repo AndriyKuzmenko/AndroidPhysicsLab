@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".FreeFallPlots">
 
     <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
         android:layout_weight="1" />
 
     <TextView
@@ -23,14 +24,14 @@
         android:textStyle="bold" />
 
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/heightPlot"
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="10"
-        android:id="@+id/heightPlot"/>
+        android:layout_weight="10" />
 
     <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
         android:layout_weight="1" />
 
     <TextView
@@ -45,13 +46,13 @@
         android:textStyle="bold" />
 
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/velocityPlot"
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:layout_weight="10"
-        android:id="@+id/velocityPlot"/>
+        android:layout_weight="10" />
 
     <Space
-        android:layout_width="0px"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
         android:layout_weight="1" />
 </LinearLayout>
