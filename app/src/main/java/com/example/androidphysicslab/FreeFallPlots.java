@@ -20,7 +20,8 @@ public class FreeFallPlots extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_fall_plots);
 
-        GraphView graph=(GraphView)findViewById(R.id.heightPlot);
+        GraphView heightPlot=(GraphView)findViewById(R.id.heightPlot);
+        GraphView velocityPlot=(GraphView)findViewById(R.id.velocityPlot);
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
@@ -41,10 +42,10 @@ public class FreeFallPlots extends AppCompatActivity
         try
         {
             LineGraphSeries<DataPoint> vSeries = new LineGraphSeries< >(vPlot);
-            graph.addSeries(vSeries);
+            heightPlot.addSeries(vSeries);
 
             LineGraphSeries<DataPoint> hSeries = new LineGraphSeries< >(hPlot);
-            graph.addSeries(hSeries);
+            velocityPlot.addSeries(hSeries);
         }
         catch (IllegalArgumentException e)
         {
