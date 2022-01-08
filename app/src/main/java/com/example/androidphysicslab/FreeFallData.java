@@ -39,6 +39,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         planetSpinner=(Spinner)findViewById(R.id.planetSpinner);
         massET=(EditText)findViewById(R.id.massET);
         heightET=(EditText)findViewById(R.id.heightET);
+        startButton=(Button)findViewById(R.id.startButton);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
