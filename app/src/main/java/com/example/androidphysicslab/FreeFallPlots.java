@@ -95,13 +95,7 @@ public class FreeFallPlots extends AppCompatActivity
     {
         int id=item.getItemId();
 
-        if(id==R.id.Credits)
-        {
-            //Intent si=new Intent(this, CreditsActivity.class);
-            //startActivity(si);
-            return true;
-        }
-        else if(id==R.id.English)
+        if(id==R.id.English)
         {
             Languages.toEnglish();
         }

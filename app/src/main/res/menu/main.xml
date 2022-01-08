@@ -9,9 +9,4 @@
         android:id="@+id/Hebrew"
         android:title="עברית"
         android:orderInCategory="200"/>
-
-    <item
-        android:id="@+id/Credits"
-        android:title="Credits"
-        android:orderInCategory="300"/>
 </menu>
