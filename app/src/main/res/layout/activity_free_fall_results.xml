@@ -34,9 +34,10 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/plotsButton"
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:onClick="plots"
             android:text="Plots" />
 
@@ -46,9 +47,10 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/menuButton"
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:onClick="back"
             android:text="Back to menu" />
 

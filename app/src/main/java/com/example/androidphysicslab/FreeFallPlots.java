@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class FreeFallPlots extends AppCompatActivity
     double[] hList,vList;
     DataPoint[] vPlot,hPlot;
     TextView heightTime, velocityTime;
+    Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,12 +35,15 @@ public class FreeFallPlots extends AppCompatActivity
         GraphView velocityPlot=(GraphView)findViewById(R.id.velocityPlot);
         heightTime=(TextView)findViewById(R.id.heightTime);
         velocityTime=(TextView)findViewById(R.id.velocityTime);
+        backButton=(Button)findViewById(R.id.backButton);
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
         vList=gi.getDoubleArrayExtra("vList");
         vPlot=new DataPoint[vList.length];
         hPlot=new DataPoint[vList.length];
+
+        changeLanguage();
 
         for(int i=0;i<vList.length;i++)
         {
@@ -109,5 +114,6 @@ public class FreeFallPlots extends AppCompatActivity
     {
         heightTime.setText(Languages.heightTime);
         velocityTime.setText(Languages.velocityTime);
+        backButton.setText(Languages.back);
     }
 }

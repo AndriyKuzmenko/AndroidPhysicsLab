@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity
 
         logIn=(Button)findViewById(R.id.logIn);
         Languages.toEnglish();
+        changeLanguage();
     }
 
     public void logIn(View view)

@@ -43,6 +43,8 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
         planetSpinner.setAdapter(adp);
         planetSpinner.setOnItemSelectedListener(this);
         planet=0;
+
+        changeLanguage();
     }
 
     public void start(View view)

@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.lang.reflect.Array;
@@ -16,6 +19,7 @@ public class FreeFallResults extends AppCompatActivity
 {
     ListView results;
     double[] hList,vList;
+    Button plotsButton,menuButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +30,9 @@ public class FreeFallResults extends AppCompatActivity
         setContentView(R.layout.activity_free_fall_results);
 
         results=(ListView)findViewById(R.id.results);
+        plotsButton=(Button)findViewById(R.id.plotsButton);
+        menuButton=(Button)findViewById(R.id.menuButton);
+        changeLanguage();
 
         Intent gi=getIntent();
         hList=gi.getDoubleArrayExtra("hList");
@@ -108,5 +115,43 @@ public class FreeFallResults extends AppCompatActivity
     {
         Intent si=new Intent(this,MenuActivity.class);
         startActivity(si);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.main,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+
+        if(id==R.id.Credits)
+        {
+            //Intent si=new Intent(this, CreditsActivity.class);
+            //startActivity(si);
+            return true;
+        }
+        else if(id==R.id.English)
+        {
+            Languages.toEnglish();
+        }
+        else if(id==R.id.Hebrew)
+        {
+            Languages.toHebrew();
+        }
+
+        changeLanguage();
+
+        return true;
+    }
+
+    public void changeLanguage()
+    {
+        plotsButton.setText(Languages.plots);
+        menuButton.setText(Languages.backToMenu);
     }
 }

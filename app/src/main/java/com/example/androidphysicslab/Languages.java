@@ -36,6 +36,9 @@ public class Languages
     public static String whatIsTheGravityOfEarth;
     public static String heightTime;
     public static String velocityTime;
+    public static String plots;
+    public static String backToMenu;
+    public static String back;
 
     public static void toEnglish()
     {
@@ -72,6 +75,9 @@ public class Languages
         whatIsTheGravityOfEarth="You have chosen Planet Earth. Do you want to substitute g=10 or g=9.807?";
         heightTime="Height as function of time";
         velocityTime="Velocity as function of time";
+        plots="Plots";
+        backToMenu="Back to menu";
+        back="Back";
     }
 
     public static void toHebrew()
@@ -109,5 +115,8 @@ public class Languages
         whatIsTheGravityOfEarth="בחרת בכדור הארץ. האם ברצונך להציב בתור תאוצת הכבידה של כדור הארת 9.807 או 10?";
         heightTime="גובה כפונקציה של זמן";
         velocityTime="מהירות כפונקציה של זמן";
+        plots="גרפים";
+        backToMenu="חזור לתפריט";
+        back="חזור";
     }
 }
