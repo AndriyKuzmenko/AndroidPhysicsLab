@@ -176,4 +176,12 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
     {
 
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

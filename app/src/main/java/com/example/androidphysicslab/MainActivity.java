@@ -66,4 +66,12 @@ public class MainActivity extends AppCompatActivity
     {
         logIn.setText(Languages.logIn);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

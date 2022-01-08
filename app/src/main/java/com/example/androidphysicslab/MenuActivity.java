@@ -66,4 +66,12 @@ public class MenuActivity extends AppCompatActivity
     {
         freeFall.setText(Languages.freeFall);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

@@ -154,4 +154,12 @@ public class FreeFallResults extends AppCompatActivity
         plotsButton.setText(Languages.plots);
         menuButton.setText(Languages.backToMenu);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }

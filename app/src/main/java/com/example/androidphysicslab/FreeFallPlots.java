@@ -116,4 +116,12 @@ public class FreeFallPlots extends AppCompatActivity
         velocityTime.setText(Languages.velocityTime);
         backButton.setText(Languages.back);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+
+        finish();
+    }
 }
