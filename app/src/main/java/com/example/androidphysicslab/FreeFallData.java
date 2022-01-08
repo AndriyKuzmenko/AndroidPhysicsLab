@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
     int planet;
     AlertDialog.Builder adb;
     EditText massET, heightET;
+    Button startButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -135,6 +137,7 @@ public class FreeFallData extends AppCompatActivity implements AdapterView.OnIte
     {
         massLabel.setText(Languages.mass);
         heightLabel.setText(Languages.height);
+        startButton.setText(Languages.start);
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,Languages.planets);
