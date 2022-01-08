@@ -75,7 +75,12 @@ public class FreeFallPlots extends AppCompatActivity
 
     public void back(View view)
     {
-        finish();
+        Intent si=new Intent(this,FreeFallResults.class);
+
+        si.putExtra("hList",hList);
+        si.putExtra("vList",vList);
+
+        startActivity(si);
     }
 
     @Override
