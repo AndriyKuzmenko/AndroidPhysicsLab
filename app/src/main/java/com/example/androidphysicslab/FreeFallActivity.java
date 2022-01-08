@@ -27,7 +27,6 @@ import java.util.TimerTask;
 public class FreeFallActivity extends AppCompatActivity
 {
     double mass,height,gravity,accelaration;
-    ArrayList<Double> hList, vList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,8 +40,6 @@ public class FreeFallActivity extends AppCompatActivity
         double meter=(double)Resources.getSystem().getDisplayMetrics().heightPixels/(height*1.3);
         accelaration=gravity*meter/100;
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
-        hList=new ArrayList<Double>();
-        vList=new ArrayList<Double>();
 
         super.onCreate(savedInstanceState);
         setContentView(new DrawingView(this,accelaration,height*meter,meter));
@@ -98,8 +95,8 @@ class DrawingView extends SurfaceView
     double accelaration;
     Canvas canvas;
     boolean started;
-    public static ArrayList<Double> hList=new ArrayList<>();
-    public static ArrayList<Double> vList=new ArrayList<>();
+    public static ArrayList<Double> hList;
+    public static ArrayList<Double> vList;
 
     public DrawingView(Context context, double accelaration, double h, double meter)
     {
@@ -114,6 +111,8 @@ class DrawingView extends SurfaceView
         this.h=h;
         this.meter=meter;
         started=false;
+        hList=new ArrayList<>();
+        vList=new ArrayList<>();
 
 /*
         Timer t=new Timer();
