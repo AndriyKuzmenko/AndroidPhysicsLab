@@ -39,6 +39,7 @@
             android:layout_height="0px"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="+972 11-111-1111"
             android:inputType="phone" />
 
         <Space
