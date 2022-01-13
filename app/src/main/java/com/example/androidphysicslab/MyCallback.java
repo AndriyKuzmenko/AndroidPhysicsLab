@@ -20,6 +20,12 @@ public class MyCallback extends PhoneAuthProvider.OnVerificationStateChangedCall
     @Override
     public void onVerificationFailed(@NonNull FirebaseException e)
     {
-        Log.d("TAG", "Registration failed");
+        Log.w("TAG", "Registration failed");
+    }
+
+    @Override
+    public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken token)
+    {
+        Log.d("TAG", "Code sent");
     }
 }
