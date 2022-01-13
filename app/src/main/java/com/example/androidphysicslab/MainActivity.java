@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
                         .setPhoneNumber(phoneNumber)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                         .setActivity(this)                 // Activity (for callback binding)
-                        //.setCallbacks(mCallback)          // OnVerificationStateChangedCallbacks
+                        .setCallbacks(new MyCallback())          // OnVerificationStateChangedCallbacks
                         .build();
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
