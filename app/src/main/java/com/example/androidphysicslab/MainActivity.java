@@ -155,7 +155,9 @@ public class MainActivity extends AppCompatActivity
                             Log.d("TAG", "signInWithEmail:success");
                             FBRef.mUser=FBRef.mAuth.getCurrentUser();
                             nextActivity();
-                        } else {
+                        }
+                        else
+                        {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.",
