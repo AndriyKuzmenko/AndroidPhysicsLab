@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
 {
     Button logIn;
     EditText phone;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,23 +42,27 @@ public class MainActivity extends AppCompatActivity
 
         phone=(EditText)findViewById(R.id.phone);
         logIn=(Button)findViewById(R.id.logIn);
+        mAuth = FirebaseAuth.getInstance();
 
         Languages.toEnglish();
         changeLanguage();
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null)
+        {
+            //reload();
+        }
+    }
+
     public void logIn(View view)
     {
-        String phoneNumber=phone.getText().toString();
 
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(FBRef.mAuth)
-                        .setPhoneNumber(phoneNumber)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // Activity (for callback binding)
-                        .setCallbacks(new MyCallback())          // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
     @Override
