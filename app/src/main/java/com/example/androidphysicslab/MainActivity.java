@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity
 {
     Button logInButton;
     EditText emailET,passwordET;
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity
         emailET=(EditText)findViewById(R.id.emailET);
         passwordET=(EditText)findViewById(R.id.passwordET);
         logInButton=(Button)findViewById(R.id.logInButton);
-        mAuth=FBRef.mAuth;
 
         Languages.toEnglish();
         changeLanguage();
@@ -59,8 +57,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null)
+        FBRef.mUser=FBRef.mAuth.getCurrentUser();
+        if(FBRef.mUser!=null)
         {
             Log.i("TAG","A user is registered");
             nextActivity();
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         String email=emailET.getText().toString();
         String password=passwordET.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+        FBRef.mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                 {
                     @Override
@@ -82,15 +80,14 @@ public class MainActivity extends AppCompatActivity
                         {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            FBRef.mUser=FBRef.mAuth.getCurrentUser();
+                            nextActivity();
                         }
                         else
                         {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "createUserWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
                         }
                     }
                 });
@@ -139,5 +136,32 @@ public class MainActivity extends AppCompatActivity
     {
         Intent si=new Intent(this, MenuActivity.class);
         startActivity(si);
+    }
+
+    public void signIn(View view)
+    {
+        String email=emailET.getText().toString();
+        String password=passwordET.getText().toString();
+
+        FBRef.mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithEmail:success");
+                            FBRef.mUser=FBRef.mAuth.getCurrentUser();
+                            nextActivity();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 }

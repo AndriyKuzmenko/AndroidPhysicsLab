@@ -98,6 +98,7 @@
             android:layout_weight="4"
             android:fontFamily="serif"
             android:gravity="center"
+            android:onClick="logOut"
             android:text="Log Out"
             android:textColor="#06073E"
             android:textSize="20sp"

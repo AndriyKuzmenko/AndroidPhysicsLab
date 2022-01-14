@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MenuActivity extends AppCompatActivity
 {
     Button freeFallButton;
@@ -25,7 +27,7 @@ public class MenuActivity extends AppCompatActivity
         emailTV=(TextView)findViewById(R.id.emailTV);
 
         changeLanguage();
-        emailTV.setText(FBRef.mAuth.getCurrentUser().getEmail());
+        emailTV.setText(FBRef.mUser.getEmail());
     }
 
     public void freeFall(View view)
@@ -71,5 +73,13 @@ public class MenuActivity extends AppCompatActivity
         super.onPause();
 
         finish();
+    }
+
+    public void logOut(View view)
+    {
+        FirebaseAuth.getInstance().signOut();
+
+        Intent si=new Intent(this, MainActivity.class);
+        startActivity(si);
     }
 }
