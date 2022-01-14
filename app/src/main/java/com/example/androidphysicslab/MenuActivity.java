@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MenuActivity extends AppCompatActivity
 {
-    Button freeFall;
+    Button freeFallButton;
+    TextView emailTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,9 +21,11 @@ public class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        freeFall=(Button)findViewById(R.id.freeFall);
+        freeFallButton=(Button)findViewById(R.id.freeFallButton);
+        emailTV=(TextView)findViewById(R.id.emailTV);
 
         changeLanguage();
+        emailTV.setText(FBRef.mAuth.getCurrentUser().getEmail());
     }
 
     public void freeFall(View view)
@@ -58,7 +62,7 @@ public class MenuActivity extends AppCompatActivity
 
     public void changeLanguage()
     {
-        freeFall.setText(Languages.freeFall);
+        freeFallButton.setText(Languages.freeFall);
     }
 
     @Override

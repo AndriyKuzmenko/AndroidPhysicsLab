@@ -34,13 +34,13 @@
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="+972 11-111-1111"
-            android:inputType="phone" />
+            android:hint="example@example.com"
+            android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_weight="1" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordET"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"
@@ -61,7 +61,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/logIn"
+            android:id="@+id/logInButton"
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="1"

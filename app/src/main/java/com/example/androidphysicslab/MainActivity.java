@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -20,7 +21,11 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthOptions;
@@ -30,8 +35,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity
 {
-    Button logIn;
-    EditText phone;
+    Button logInButton;
+    EditText emailET,passwordET;
     private FirebaseAuth mAuth;
 
     @Override
@@ -40,9 +45,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        phone=(EditText)findViewById(R.id.phone);
-        logIn=(Button)findViewById(R.id.logIn);
-        mAuth = FirebaseAuth.getInstance();
+        emailET=(EditText)findViewById(R.id.emailET);
+        passwordET=(EditText)findViewById(R.id.passwordET);
+        logInButton=(Button)findViewById(R.id.logInButton);
+        mAuth=FBRef.mAuth;
 
         Languages.toEnglish();
         changeLanguage();
@@ -56,13 +62,38 @@ public class MainActivity extends AppCompatActivity
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null)
         {
-            //reload();
+            Log.i("TAG","A user is registered");
+            nextActivity();
         }
     }
 
     public void logIn(View view)
     {
+        String email=emailET.getText().toString();
+        String password=passwordET.getText().toString();
 
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            //updateUI(user);
+                        }
+                        else
+                        {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(MainActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+                    }
+                });
     }
 
     @Override
@@ -93,7 +124,7 @@ public class MainActivity extends AppCompatActivity
 
     public void changeLanguage()
     {
-        logIn.setText(Languages.logIn);
+        logInButton.setText(Languages.logIn);
     }
 
     @Override
