@@ -28,6 +28,7 @@ public class MenuActivity extends AppCompatActivity
 
         changeLanguage();
         emailTV.setText(FBRef.mUser.getEmail());
+        FBRef.myRef=FBRef.database.getReference(FBRef.mUser.getUid());
     }
 
     public void freeFall(View view)
@@ -78,6 +79,7 @@ public class MenuActivity extends AppCompatActivity
     public void logOut(View view)
     {
         FirebaseAuth.getInstance().signOut();
+        FBRef.myRef=null;
 
         Intent si=new Intent(this, MainActivity.class);
         startActivity(si);

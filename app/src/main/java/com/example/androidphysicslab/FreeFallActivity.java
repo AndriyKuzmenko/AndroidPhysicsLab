@@ -80,7 +80,7 @@ public class FreeFallActivity extends AppCompatActivity
                 vList[i]=drawingView.vList.get(i);
             }
 
-            FreeFallObject results=new FreeFallObject(hList,vList);
+            saveResults(new FreeFallObject(drawingView.hList,drawingView.vList,drawingView.name));
 
             si.putExtra("hList",hList);
             si.putExtra("vList",vList);
@@ -88,6 +88,11 @@ public class FreeFallActivity extends AppCompatActivity
         }
 
         return true;
+    }
+
+    public void saveResults(FreeFallObject results)
+    {
+        FBRef.myRef.child(results.getName()).setValue(results);
     }
 }
 
