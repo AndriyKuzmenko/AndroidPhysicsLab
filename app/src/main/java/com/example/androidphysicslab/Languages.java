@@ -42,6 +42,8 @@ public class Languages
     public static String emailAddress;
     public static String password;
     public static String signIn;
+    public static String credits;
+    public static String logOut;
 
     public static void toEnglish()
     {
@@ -84,6 +86,8 @@ public class Languages
         emailAddress="Email address";
         password="Password";
         signIn="Sign In";
+        credits="Credits";
+        logOut="Log out";
     }
 
     public static void toHebrew()
@@ -127,5 +131,7 @@ public class Languages
         emailAddress="כתובת אימייל";
         password="סיסמא";
         signIn="התחברות";
+        credits="מסך קרדיטים";
+        logOut="התנתקות";
     }
 }
