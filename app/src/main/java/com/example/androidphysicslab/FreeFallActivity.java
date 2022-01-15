@@ -80,6 +80,8 @@ public class FreeFallActivity extends AppCompatActivity
                 vList[i]=drawingView.vList.get(i);
             }
 
+            FreeFallObject results=new FreeFallObject(hList,vList);
+
             si.putExtra("hList",hList);
             si.putExtra("vList",vList);
             startActivity(si);
