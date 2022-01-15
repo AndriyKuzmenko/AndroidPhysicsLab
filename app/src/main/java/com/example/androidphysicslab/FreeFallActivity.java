@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import java.util.TimerTask;
 public class FreeFallActivity extends AppCompatActivity
 {
     double mass,height,gravity,accelaration;
+    DrawingView drawingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,7 +44,8 @@ public class FreeFallActivity extends AppCompatActivity
         Log.w("TAG","a="+accelaration+" meter="+meter+" g="+gravity+" h="+height);
 
         super.onCreate(savedInstanceState);
-        setContentView(new DrawingView(this,accelaration,height*meter,meter));
+        drawingView=new DrawingView(this,accelaration,height*meter,meter);
+        setContentView(drawingView);
     }
 
     @Override
@@ -63,18 +66,18 @@ public class FreeFallActivity extends AppCompatActivity
 
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if(DrawingView.vList.contains(-1.0))
+        if(drawingView.vList.contains(-1.0))
         {
-            DrawingView.vList.remove(-1.0);
+            drawingView.vList.remove(-1.0);
             Intent si=new Intent(this,FreeFallResults.class);
-            Log.w("TAG",""+DrawingView.hList.size()+" "+DrawingView.vList.size());
-            double[] hList=new double[DrawingView.hList.size()];
-            double[] vList=new double[DrawingView.vList.size()];
+            Log.w("TAG",""+drawingView.hList.size()+" "+drawingView.vList.size());
+            double[] hList=new double[drawingView.hList.size()];
+            double[] vList=new double[drawingView.vList.size()];
 
             for(int i=0; i<hList.length; i++)
             {
-                hList[i]=DrawingView.hList.get(i);
-                vList[i]=DrawingView.vList.get(i);
+                hList[i]=drawingView.hList.get(i);
+                vList[i]=drawingView.vList.get(i);
             }
 
             si.putExtra("hList",hList);
@@ -95,8 +98,9 @@ class DrawingView extends SurfaceView
     double accelaration;
     Canvas canvas;
     boolean started;
-    public static ArrayList<Double> hList;
-    public static ArrayList<Double> vList;
+    public ArrayList<Double> hList;
+    public ArrayList<Double> vList;
+    public String name;
 
     public DrawingView(Context context, double accelaration, double h, double meter)
     {
@@ -113,6 +117,8 @@ class DrawingView extends SurfaceView
         started=false;
         hList=new ArrayList<>();
         vList=new ArrayList<>();
+        name="Free Fall "+SystemClock.uptimeMillis();
+        Log.d("TAG",name);
 
 /*
         Timer t=new Timer();
