@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity
 {
-    Button logInButton;
+    Button logInButton,signInButton;
     EditText emailET,passwordET;
 
     @Override
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         emailET=(EditText)findViewById(R.id.emailET);
         passwordET=(EditText)findViewById(R.id.passwordET);
         logInButton=(Button)findViewById(R.id.logInButton);
+        signInButton=(Button)findViewById(R.id.signInButton);
 
         Languages.toEnglish();
         changeLanguage();
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity
         logInButton.setText(Languages.logIn);
         emailET.setHint(Languages.emailAddress);
         passwordET.setHint(Languages.password);
+        signInButton.setText(Languages.signIn);
     }
 
     @Override

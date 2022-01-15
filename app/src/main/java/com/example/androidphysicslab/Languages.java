@@ -41,6 +41,7 @@ public class Languages
     public static String back;
     public static String emailAddress;
     public static String password;
+    public static String signIn;
 
     public static void toEnglish()
     {
@@ -82,11 +83,12 @@ public class Languages
         back="Back";
         emailAddress="Email address";
         password="Password";
+        signIn="Sign In";
     }
 
     public static void toHebrew()
     {
-        logIn="התחברות";
+        logIn="יצירת חשבון";
         freeFall="נפילה חופשית";
         start="התחל";
         mass="מסה (קילוגרם)";
@@ -124,5 +126,6 @@ public class Languages
         back="חזור";
         emailAddress="כתובת אימייל";
         password="סיסמא";
+        signIn="התחברות";
     }
 }
