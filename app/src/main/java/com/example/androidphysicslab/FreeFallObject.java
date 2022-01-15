@@ -4,31 +4,31 @@ import java.util.ArrayList;
 
 public class FreeFallObject extends Experiment
 {
-    private ArrayList<Double> hList;
-    private ArrayList<Double> vList;
+    private double[] hList;
+    private double[] vList;
 
-    public FreeFallObject(ArrayList<Double> hList, ArrayList<Double> vList)
+    public FreeFallObject(double[] hList, double[] vList)
     {
         this.hList=hList;
         this.vList=vList;
     }
 
-    public void setHList(ArrayList<Double> hList)
+    public void setHList(double[] hList)
     {
         this.hList=hList;
     }
 
-    public void setVList(ArrayList<Double> vList)
+    public void setVList(double[] vList)
     {
         this.vList=vList;
     }
 
-    public ArrayList<Double> getHList()
+    public double[] getHList()
     {
         return hList;
     }
 
-    public ArrayList<Double> getVList()
+    public double[] getVList()
     {
         return vList;
     }
