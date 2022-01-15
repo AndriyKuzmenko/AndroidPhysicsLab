@@ -39,6 +39,8 @@ public class Languages
     public static String plots;
     public static String backToMenu;
     public static String back;
+    public static String emailAddress;
+    public static String password;
 
     public static void toEnglish()
     {
@@ -78,6 +80,8 @@ public class Languages
         plots="Plots";
         backToMenu="Back to menu";
         back="Back";
+        emailAddress="Email address";
+        password="Password";
     }
 
     public static void toHebrew()
@@ -118,5 +122,7 @@ public class Languages
         plots="גרפים";
         backToMenu="חזור לתפריט";
         back="חזור";
+        emailAddress="כתובת אימייל";
+        password="סיסמא";
     }
 }

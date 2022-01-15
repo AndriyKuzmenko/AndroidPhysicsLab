@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity
     public void changeLanguage()
     {
         logInButton.setText(Languages.logIn);
+        emailET.setHint(Languages.emailAddress);
+        passwordET.setHint(Languages.password);
     }
 
     @Override
